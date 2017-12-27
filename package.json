@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Functional programming solutions to the project Euler",
   "scripts": {
-    "test": "./node_modules/.bin/mocha src/*spec.js"
+    "build": "./node_modules/.bin/babel -d dist src/",
+    "test": "npm run build && ./node_modules/.bin/mocha dist/*spec.js",
+    "validate": "npm run build && ./node_modules/.bin/mocha dist/answers_check.js"
   },
   "author": "Germain GAU",
   "license": "MIT",
@@ -11,6 +13,9 @@
     "ramda": "^0.25.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "chai": "^4.1.2",
     "mocha": "^4.0.1"
   }
