@@ -1,5 +1,8 @@
 var R = require('ramda');
 
+
+// Return the nth element of the fibonacci sequence
+// Number -> Number
 var fibAt = R.memoizeWith(
   R.identity,
   R.compose(
@@ -13,18 +16,37 @@ var fibAt = R.memoizeWith(
   )
 )
 
+// Number -> [Number]
 var fibUntil = function(mx) {
-  return R.takeWhile(
+  // n -> Is the nth fibonacci number below mx
+  // Number -> Boolean
+  var isBelowLimit = R.compose(
     R.flip(R.lt)(mx),
-    R.map(fibAt, R.range(0, R.inc(mx)))
+    fibAt
+  )
+
+  // Filter is here to return [] in the case of mx = 0
+  return R.filter(
+    R.flip(R.lt)(mx),
+    R.reduceWhile(
+      function (acc, x) { return isBelowLimit(x) },
+      function (acc, x) { return R.append(fibAt(x), acc) },
+      [0],
+      R.range(1, (mx * 2))
+    )
   )
 }
 
+
+// Number -> Boolean
 var isEven = R.compose(
   R.equals(0),
   R.flip(R.modulo)(2)
 )
 
+
+// n -> Sum of the even fibonacci numbers up to n
+// Number -> Number
 var evenFibonacciNumbersUntil = R.compose(
   R.sum,
   R.filter(isEven),
@@ -34,5 +56,6 @@ var evenFibonacciNumbersUntil = R.compose(
 
 module.exports = {
   fibAt,
+  fibUntil,
   evenFibonacciNumbersUntil
 }
