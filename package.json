@@ -4,8 +4,10 @@
   "description": "Functional programming solutions to the project Euler",
   "scripts": {
     "build": "./node_modules/.bin/babel -d dist src/",
-    "test": "npm run build && ./node_modules/.bin/mocha dist/*spec.js",
-    "validate": "npm run build && ./node_modules/.bin/mocha dist/answers_check.js"
+    "test": "npm run test:unit",
+    "test:all": "npm run test:unit && npm run test:validate",
+    "test:unit": "npm run build && ./node_modules/.bin/mocha dist/*spec.js",
+    "test:validate": "npm run build && ./node_modules/.bin/mocha dist/answers_check.js"
   },
   "author": "Germain GAU",
   "license": "MIT",
