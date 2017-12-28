@@ -1,9 +1,8 @@
-var R = require('ramda');
-
+import R from 'ramda';
 
 // Return the nth element of the fibonacci sequence
 // Number -> Number
-var fibAt = R.memoizeWith(
+const fibAt = R.memoizeWith(
   R.identity,
   R.compose(
     R.max(0),
@@ -11,16 +10,16 @@ var fibAt = R.memoizeWith(
       R.lte(2),
       // Does not work in a pointfree maner
       // See : https://stackoverflow.com/questions/40985044/pointfree-recursion-in-js-with-ramda
-      function (x) { return R.add(fibAt(x - 2), fibAt(x - 1)) }
+      (x) => R.add(fibAt(x - 2), fibAt(x - 1))
     )
   )
 )
 
 // Number -> [Number]
-var fibUntil = function(mx) {
+const fibUntil = (mx) => {
   // n -> Is the nth fibonacci number below mx
   // Number -> Boolean
-  var isBelowLimit = R.compose(
+  const isBelowLimit = R.compose(
     R.flip(R.lt)(mx),
     fibAt
   )
@@ -29,8 +28,8 @@ var fibUntil = function(mx) {
   return R.filter(
     R.flip(R.lt)(mx),
     R.reduceWhile(
-      function (acc, x) { return isBelowLimit(x) },
-      function (acc, x) { return R.append(fibAt(x), acc) },
+      (acc, x) => isBelowLimit(x),
+      (acc, x) => R.append(fibAt(x), acc),
       [0],
       R.range(1, (mx * 2))
     )
@@ -39,7 +38,7 @@ var fibUntil = function(mx) {
 
 
 // Number -> Boolean
-var isEven = R.compose(
+const isEven = R.compose(
   R.equals(0),
   R.flip(R.modulo)(2)
 )
@@ -47,7 +46,7 @@ var isEven = R.compose(
 
 // n -> Sum of the even fibonacci numbers up to n
 // Number -> Number
-var evenFibonacciNumbersUntil = R.compose(
+const evenFibonacciNumbersUntil = R.compose(
   R.sum,
   R.filter(isEven),
   fibUntil

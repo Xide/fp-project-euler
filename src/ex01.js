@@ -1,7 +1,8 @@
-var R = require('ramda');
+import R from 'ramda';
+
 
 // Number -> Number -> Boolean
-var dividesByN = function(n) {
+const dividesByN = (n) => {
   return R.compose(
     R.equals(0),
     R.modulo(R.__, n)
@@ -9,13 +10,13 @@ var dividesByN = function(n) {
 }
 
 // [Number] -> Number -> Boolean
-var divideByOneOf = function(dividers) {
+const divideByOneOf = (dividers) => {
   return R.anyPass(R.map(dividesByN, dividers))
 }
 
 // Number -> Boolean
 // Argument is the sum higher limit
-var sumOfMultiplesUntil = R.compose(
+const sumOfMultiplesUntil = R.compose(
   R.sum,
   R.filter(divideByOneOf([3, 5])),
   R.range(1)

@@ -1,21 +1,21 @@
-var R = require('ramda');
-var expect = require("chai").expect;
+import R from 'ramda';
+import { expect } from 'chai';
 
-var ex = require('./ex02')
+import ex from './ex02';
 
-describe("Problem 2 - Even Fibonacci numbers", function () {
-  describe("fibAt", function() {
-    it("Should yield the correct fibonnaci sequence for the 10 first terms", function () {
+describe("Problem 2 - Even Fibonacci numbers", () => {
+  describe("fibAt", () => {
+    it("Should yield the correct fibonnaci sequence for the 10 first terms", () => {
       expect(R.map(ex.fibAt, R.range(0, 10))).to.deep.equals(
         [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
       )
     })
   })
-  describe("fibUntil", function() {
-    it("Should not print anything when max is 0", function() {
+  describe("fibUntil", () => {
+    it("Should not print anything when max is 0", () => {
       expect(ex.fibUntil(0)).to.deep.equals([])
     })
-    it("Should not print values above the max", function() {
+    it("Should not print values above the max", () => {
       expect(ex.fibUntil(64)).to.deep.equals([0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55])
     })
   })
