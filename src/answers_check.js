@@ -2,7 +2,7 @@ import { expect } from 'chai';
 
 import ex01 from './ex01';
 import ex02 from './ex02';
-
+import ex03 from './ex03';
 
 describe("Problem 1 - Multiples of 3 and 5", () => {
   it("Should yield the correct result", () => {
@@ -14,5 +14,11 @@ describe("Problem 1 - Multiples of 3 and 5", () => {
 describe("Problem 2 - Even Fibonacci numbers", () => {
   it("Should yield the correct result", () => {
     expect(ex02.evenFibonacciNumbersUntil(4000000)).to.equals(4613732);
+  })
+})
+
+describe("Problem 3 - Largest prime factors", () => {
+  it("Should yield the correct result", () => {
+    expect(ex03.solve()).to.equals(6857);
   })
 })

@@ -4,12 +4,6 @@ import { expect } from 'chai';
 import utils from './utils';
 
 describe("Utils - Primes", () => {
-  console.log(utils.isFactorOf(10))
-  console.log(utils.isFactorOf(10, 2))
-  console.log(utils.isFactorOf(10)(2))
-  console.log(utils.isPrime(41))
-  console.log(utils.isPrime(42))
-
   describe("isPrime", () => {
     it("Should recognize primes", () => {
       expect(
@@ -30,12 +24,23 @@ describe("Utils - Primes", () => {
     })
   })
 
-    describe("primesInRange", () => {
-      it("Should yield the correct first primes", () => {
-        expect(utils.primesInRange(0, 42)).to.deep.equals(
-          [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41]
-        )
-      })
+  describe("primesInRange", () => {
+    it("Should yield the correct first primes", () => {
+      expect(utils.primesInRange(0, 42)).to.deep.equals(
+        [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41]
+      )
+    })
+  })
+  describe("primeFactors", () => {
+    it("Should yield the correct factors for 100", () => {
+      expect(utils.primeFactors(100)).to.deep.equals(
+        [2, 5]
+      )
     })
 
+    it("Should yield an empty array for low values", () => {
+      expect(utils.primeFactors(0)).to.deep.equals([])
+      expect(utils.primeFactors(1)).to.deep.equals([])
+    })
+  })
 })

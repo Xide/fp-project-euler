@@ -1,4 +1,6 @@
 import R from 'ramda';
+import Lazy from 'lazy.js';
+
 
 const trace = R.curry((prefix, x) => {
   console.log(prefix, x);
@@ -47,7 +49,48 @@ const primesInRange = R.curry(
 )
 
 
+
+
+const incrementer = (start) => Lazy.generate((i) => i + start + 1)
+
+const primeFactors = (n) => {
+  // Mutable state, only to interrupt reduce if
+  // the remainder of the current operation is
+  // alredy one before we reach sqrt(n)
+  var agg = n;
+
+  // Prevent garbage values (0, 1) in output if the
+  // input is not an integer above 1
+  if (n < 2) return []
+
+  const factors = incrementer(1)
+    .takeWhile(R.gt(Math.sqrt(n)))
+    .takeWhile((x) => {return agg > 1})
+    .filter(isPrime)
+    .reduce(
+      (acc, x) => {
+        let r = acc.r
+
+        while (R.equals(0, R.modulo(r, x)))
+          r = r / x
+
+        // Side effect
+        agg = r
+        return {
+          r: r,
+          v: r == acc.r ? acc.v : R.concat(acc.v, [x])
+        }
+      }, {
+        r: n,
+        v: []
+      }
+    )
+
+    return factors.r == 1 ? factors.v : R.concat(factors.v, [factors.r])
+}
+
 module.exports = {
+  primeFactors,
   isFactorOf,
   isPrime,
   primesInRange,
