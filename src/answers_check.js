@@ -4,6 +4,7 @@ import ex01 from './ex01';
 import ex02 from './ex02';
 import ex03 from './ex03';
 import ex04 from './ex04';
+import ex05 from './ex05';
 
 describe("Problem 1 - Multiples of 3 and 5", () => {
   it("Should yield the correct result", () => {
@@ -27,5 +28,11 @@ describe("Problem 3 - Largest prime factors", () => {
 describe("Problem 4 - Largest palindroms product", () => {
   it("Should yield the correct result", () => {
     expect(ex04.solve()).to.equals(906609);
+  })
+})
+
+describe("Problem 5 - Smallest multiple", () => {
+  it("Should yield the correct result", () => {
+    expect(ex05.solve()).to.equals(232792560);
   })
 })
