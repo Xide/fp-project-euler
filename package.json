@@ -7,7 +7,7 @@
     "build": "./node_modules/.bin/babel-changed src -d dist",
     "test": "npm run test:unit",
     "test:all": "npm run test:unit && npm run test:validate",
-    "test:unit": "npm run build && ./node_modules/.bin/mocha dist/*spec.js",
+    "test:unit": "npm run build && ./node_modules/.bin/mocha dist/specs/*.js",
     "test:validate": "npm run build && ./node_modules/.bin/mocha dist/answers_check.js"
   },
   "author": "Germain GAU",

@@ -1,7 +1,7 @@
 import R from 'ramda';
 import { expect } from 'chai';
 
-import utils from './utils';
+import utils from '../utils';
 
 describe("Utils - Primes", () => {
   describe("isPrime", () => {

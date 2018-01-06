@@ -1,7 +1,7 @@
 import R from 'ramda';
 import { expect } from 'chai';
 
-import ex from './ex04';
+import ex from '../ex04';
 
 describe("Problem 4 - Largest Palindrome Product", () => {
 

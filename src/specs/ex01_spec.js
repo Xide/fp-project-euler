@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import ex01 from './ex01'
+import ex01 from '../ex01'
 
 
 describe("Problem 1 - Multiples of 3 and 5", () => {

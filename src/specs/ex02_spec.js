@@ -1,7 +1,7 @@
 import R from 'ramda';
 import { expect } from 'chai';
 
-import ex from './ex02';
+import ex from '../ex02';
 
 describe("Problem 2 - Even Fibonacci numbers", () => {
   describe("fibAt", () => {
