@@ -4,16 +4,16 @@
 //
 // What is the largest prime factor of the number 600851475143 ?
 
-import R from 'ramda';
-import { primeFactors } from './utils';
+import R from "ramda";
+import { primeFactors } from "./utils";
 
 
 const solve = () => {
-  return R.last(primeFactors(600851475143))
-}
+  return R.last(primeFactors(600851475143));
+};
 
 
 
 export default {
   solve
-}
+};

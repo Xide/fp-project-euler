@@ -9,7 +9,7 @@
 // whose values do not exceed four million,
 // find the sum of the even-valued terms.
 
-import R from 'ramda';
+import R from "ramda";
 
 
 // Return the nth element of the fibonacci sequence
@@ -25,7 +25,7 @@ export const fibAt = R.memoizeWith(
       (x) => R.add(fibAt(x - 2), fibAt(x - 1))
     )
   )
-)
+);
 
 // Number -> [Number]
 export const fibUntil = (mx) => {
@@ -34,7 +34,7 @@ export const fibUntil = (mx) => {
   const isBelowLimit = R.compose(
     R.flip(R.lt)(mx),
     fibAt
-  )
+  );
 
   // Filter is here to return [] in the case of mx = 0
   return R.filter(
@@ -45,15 +45,15 @@ export const fibUntil = (mx) => {
       [0],
       R.range(1, (mx * 2))
     )
-  )
-}
+  );
+};
 
 
 // Number -> Boolean
 const isEven = R.compose(
   R.equals(0),
   R.flip(R.modulo)(2)
-)
+);
 
 
 // n -> Sum of the even fibonacci numbers up to n
@@ -62,11 +62,11 @@ export const evenFibonacciNumbersUntil = R.compose(
   R.sum,
   R.filter(isEven),
   fibUntil
-)
+);
 
 
 export default {
   fibAt,
   fibUntil,
   evenFibonacciNumbersUntil
-}
+};
