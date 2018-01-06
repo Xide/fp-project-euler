@@ -8,6 +8,6 @@ const solve = () => {
 
 
 
-module.exports = {
+export default {
   solve
 }

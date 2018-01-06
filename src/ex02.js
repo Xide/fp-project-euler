@@ -2,7 +2,7 @@ import R from 'ramda';
 
 // Return the nth element of the fibonacci sequence
 // Number -> Number
-const fibAt = R.memoizeWith(
+export const fibAt = R.memoizeWith(
   R.identity,
   R.compose(
     R.max(0),
@@ -16,7 +16,7 @@ const fibAt = R.memoizeWith(
 )
 
 // Number -> [Number]
-const fibUntil = (mx) => {
+export const fibUntil = (mx) => {
   // n -> Is the nth fibonacci number below mx
   // Number -> Boolean
   const isBelowLimit = R.compose(
@@ -46,14 +46,14 @@ const isEven = R.compose(
 
 // n -> Sum of the even fibonacci numbers up to n
 // Number -> Number
-const evenFibonacciNumbersUntil = R.compose(
+export const evenFibonacciNumbersUntil = R.compose(
   R.sum,
   R.filter(isEven),
   fibUntil
 )
 
 
-module.exports = {
+export default {
   fibAt,
   fibUntil,
   evenFibonacciNumbersUntil
