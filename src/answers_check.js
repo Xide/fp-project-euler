@@ -5,6 +5,7 @@ import ex02 from './ex02';
 import ex03 from './ex03';
 import ex04 from './ex04';
 import ex05 from './ex05';
+import ex06 from './ex06';
 
 describe("Problem 1 - Multiples of 3 and 5", () => {
   it("Should yield the correct result", () => {
@@ -34,5 +35,11 @@ describe("Problem 4 - Largest palindroms product", () => {
 describe("Problem 5 - Smallest multiple", () => {
   it("Should yield the correct result", () => {
     expect(ex05.solve()).to.equals(232792560);
+  })
+})
+
+describe("Problem 6 - Sum square difference", () => {
+  it("Should yield the correct result", () => {
+    expect(ex06.solve()).to.equals(25164150);
   })
 })
