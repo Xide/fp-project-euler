@@ -5,6 +5,7 @@
   "scripts": {
     "clean": "rm -rf dist",
     "build": "./node_modules/.bin/babel src -d dist",
+    "lint": "./node_modules/.bin/eslint src/",
     "test": "npm run test:all",
     "test:all": "npm run clean && npm run test:unit && npm run test:validate",
     "test:unit": "npm run build && ./node_modules/.bin/mocha dist/specs/*.js",
@@ -25,6 +26,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "chai": "^4.1.2",
+    "eslint": "^4.14.0",
     "mocha": "^4.0.1"
   }
 }
