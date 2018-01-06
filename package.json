@@ -8,7 +8,7 @@
     "test": "npm run test:all",
     "test:all": "npm run test:unit && npm run test:validate",
     "test:unit": "npm run build && ./node_modules/.bin/mocha dist/specs/*.js",
-    "test:validate": "npm run build && ./node_modules/.bin/mocha dist/answers_check.js --timeout 10000"
+    "test:validate": "npm run build && ./node_modules/.bin/mocha dist/answers_check.js --timeout 60000"
   },
   "author": "Germain GAU",
   "license": "MIT",
